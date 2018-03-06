@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<style type="text/css">
+body,
+h3,
+p{
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+main{
+	display: block;
+}
+input,
+textarea,
+select,
+button{
+	margin: 0;
+	padding: 0;
+	border: 1px solid #000;
+	outline: none;
+	background: transparent;
+}
+.clearFix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.header{
+	background: #323232;
+	height: 50px;
+}
+.toCenter{
+	height: 100%;
+	width: 600px;
+	margin: 0 auto;
+}
+.header h3{
+	float: left;
+	font: bold 22px/50px '微软雅黑';
+	color: #ddd;
+}
+#import{
+	float: right;
+	width: 360px;
+	height: 24px;
+	margin-top: 12px;
+	border: 1px solid #323232;
+	text-indent: 10px;
+	border-radius: 5px;
+	box-shadow: inset 0 0 3px #323232;
+	background: #fff;
+}
+body{
+	background: #cdcdcd;
+}
+#list li,
+.footer{
+	position: relative;
+	height: 32px;
+	margin-top: 10px;
+	padding: 0 36px 0 46px;
+	box-shadow: 0 2px 3px #c3c3c3;
+	background: #fff;
+}
+#list li:before,
+.footer:before{
+	content: '';
+	position: absolute;
+	left: -5px;
+	top: 0;
+	box-sizing: border-box;
+	width: 5px;
+	height: 100%;
+	border: 1px solid transparent;
+	border-radius: 3px 0 0 3px;
+	background: #629a9c;
+}
+#list>.checked{
+	opacity: .7;
+}
+#list>.checked:before{
+	background: #a4a4a4;
+}
+#list p{
+	height: 100%;
+	font: 16px/2 '微软雅黑';
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#list input{
+	position: absolute;
+	left: 45px;
+	top: 50%;
+	margin-top: -13px;
+	height: 24px;
+	width: 516px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: inset 0 0 3px #ccc;
+	font: 16px/2 '微软雅黑';
+}
+.checkbox{
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	margin-top: -11px;
+	width: 22px;
+	height: 22px;
+	border: 1px solid #b2b2b2;
+	border-radius: 2px;
+	background: -webkit-linear-gradient(top,#ededed, #dedede);
+	cursor: pointer;
+}
+.checkbox:after{
+	content: '';
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -8px;
+	margin-top: -6px;
+	width: 10px;
+	height: 3px;
+	border: 3px solid #878787;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	transform: rotateZ(-45deg);
+}
+#list>.checked .checkbox:after{
+	display: block;
+}
+.del{
+	position: absolute;
+	right: 7px;
+	top: 50%;
+	margin-top: -11px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.del:before{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin:-7px 0 0 -7px;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	background: #ccc;
+}
+.del:after{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -3px;
+	width: 6px;
+	height: 2px;
+	background: #fff;
+}
+.footer{
+	position: relative;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 32px;
+	background: #323232;
+}
+.footer:before{
+	background: #323232;
+}
+.selectAll.checkbox:after{
+	display: block;
+}
+.footer span{
+	float: left;
+	width: 36px;
+	height: 100%;
+	font: bold 16px/2 '微软雅黑';
+	color: #fff;
+}
+.footer input{
+	float: left;
+	border: 0;
+	width: 130px;
+	height: 100%;
+	text-align: center;
+	color: #fff;
+}
+.del-checked{
+	float: right;
+	height: 100%;
+	border: 0;
+	color: #fff;
+	text-shadow: 1px 1px 2px #fff;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+</head>
+<body>
+<section>
+	<header class="header clearFix">
+		<div class="toCenter">
+			<h3>ToDoList</h3>
+			<input type="text" id="import" placeholder="添加ToDoList">
+		</div>
+	</header>
+	<main class="toCenter">
+		<ul id="list">
+<!-- 			<li class="checked">
+				<button class="checkbox"></button>
+				<p>辅导教师开发的就死哦非点击死的健康拉夫几点开始富室考虑房价的思路范德萨哦</p>
+				<input type="text" name="">
+				<button class="del"></button>
+			</li> -->
+		</ul>
+	</main>
+	<footer class="toCenter footer clearFix">
+		<button class="checkbox" id="selectAll"></button>
+		<span>全选</span>
+		<input type="text" id="finished" value="当前已完成0项" readonly>
+		<input type="text" id="todo" value="当前未完成0项" readonly>
+		<button class="del-checked">删除已完成</button>
+	</footer>
+</section>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
